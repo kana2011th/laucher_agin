@@ -1,6 +1,6 @@
 ﻿Imports System
 Imports System.Net
-Imports WMPLib
+
 Public Class portal
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -10,12 +10,12 @@ Public Class portal
             player.settings.volume = "10"
             Label2.Text = Application.ProductVersion
         Catch ex As Exception
-
+            Debug.Close()
         End Try
     End Sub
-
     Private Sub btnjoin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnjoin.MouseCaptureChanged
         Form3.Show()
+        Me.Hide()
     End Sub
     Private Sub btnwlink_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnwlink.MouseCaptureChanged
         Dim theWebSite As String
@@ -29,13 +29,15 @@ Public Class portal
     End Sub
 
     Private Sub btnrstop_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnrstop.Click
-        Dim controls As WMPLib.IWMPControls3 = player.Ctlcontrols
-        If (controls.isAvailable("stop")) Then
-            controls.stop()
+
+        If (player.Ctlcontrols.isAvailable("stop")) Then
+            player.Ctlcontrols.stop()
             btnrstop.Text = "เปิดเพลง"
+            btnopenvol.Hide()
             Return
-        ElseIf (controls.isAvailable("play")) Then
-            controls.play()
+        ElseIf (player.Ctlcontrols.isAvailable("play")) Then
+            player.Ctlcontrols.play()
+            btnopenvol.Show()
             btnrstop.Text = "ปิดเพลง"
         Else
 
@@ -50,5 +52,13 @@ Public Class portal
 
     Private Sub btnopenvol_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnopenvol.Click
         VolForm.Show()
+    End Sub
+    Private Sub status_change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles player.StatusChange
+        If (player.status.Contains("Mikudayo")) Then
+            Dim dayo As String = player.status.Replace("Mikudayo", "AutoDJ")
+            status1.Text = dayo
+        Else
+            status1.Text = player.status
+        End If
     End Sub
 End Class

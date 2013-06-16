@@ -51,6 +51,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>MC ROCKERGER.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -71,10 +72,10 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>09B5E50D6A89FE78AC8DB3F3A5D9A6F2F35D18A4</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>D6730E0564386E140D3B540F61A49F43746817A0</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>MC ROCKERGER_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>MC ROCKERGER_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -90,22 +91,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
-    <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
     <Import Include="System.Windows.Forms" />
@@ -129,16 +125,16 @@
     <Compile Include="launcher.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="rlogin.Designer.vb">
+      <DependentUpon>rlogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rlogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="vol.Designer.vb">
       <DependentUpon>vol.vb</DependentUpon>
     </Compile>
     <Compile Include="vol.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form5.Designer.vb">
-      <DependentUpon>Form5.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form5.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -175,11 +171,11 @@
     <EmbeddedResource Include="launcher.resx">
       <DependentUpon>launcher.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="rlogin.resx">
+      <DependentUpon>rlogin.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vol.resx">
       <DependentUpon>vol.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form5.resx">
-      <DependentUpon>Form5.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -200,8 +196,6 @@
     <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="kana2011.pfx" />
-    <None Include="MC ROCKERGER_1_TemporaryKey.pfx" />
-    <None Include="MC ROCKERGER_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -247,6 +241,7 @@
       <Lcid>0</Lcid>
       <WrapperTool>aximp</WrapperTool>
       <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="WMPLib">
       <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
@@ -255,7 +250,7 @@
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -2,12 +2,17 @@
 Imports System.Text
 Imports System.Net
 Imports System.Web
+Imports System.Windows.Forms
 Public Class Form3
+    Private Sub btnexit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.FormClosing
+        portal.Show()
+    End Sub
     Private Sub btnjoin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnjoin.Click
         Dim mclauncher As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\.mc-re"
         If radreal.Checked = True Then
             Try
-                rLoginForm.show()
+                rLoginForm.Show()
+                Me.Hide()
             Catch
             End Try
         End If
@@ -65,6 +70,10 @@ C3:
         End Try
     End Sub
     Private Sub btndownload_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btndownload.Click
-        CheckForUpdates()
+        Minecraft.CheckForUpdates()
+    End Sub
+
+    Private Sub SplitContainer2_Panel2_Paint(sender As Object, e As PaintEventArgs) Handles SplitContainer2.Panel2.Paint
+
     End Sub
 End Class

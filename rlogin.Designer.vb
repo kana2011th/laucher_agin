@@ -22,6 +22,7 @@ Partial Class rLoginForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(rLoginForm))
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.progress = New System.Windows.Forms.ToolStripProgressBar()
         Me.status = New System.Windows.Forms.ToolStripStatusLabel()
@@ -33,12 +34,10 @@ Partial Class rLoginForm
         Me.username = New System.Windows.Forms.TextBox()
         Me.password = New System.Windows.Forms.TextBox()
         Me.btnexit = New System.Windows.Forms.Button()
-        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.progress, Me.status, Me.isstatus})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 239)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(284, 22)
@@ -58,12 +57,13 @@ Partial Class rLoginForm
         'isstatus
         '
         Me.isstatus.Name = "isstatus"
-        Me.isstatus.Size = New System.Drawing.Size(121, 17)
-        Me.isstatus.Text = "ToolStripStatusLabel1"
+        Me.isstatus.Size = New System.Drawing.Size(0, 17)
         '
         'Panel1
         '
+        Me.Panel1.BackgroundImage = Global.kana2011th.relauncher.My.Resources.Resource1.login
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(284, 100)
         Me.Panel1.TabIndex = 1
@@ -135,6 +135,7 @@ Partial Class rLoginForm
         Me.Controls.Add(Me.btnlogin)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.StatusStrip1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(300, 300)
         Me.MinimizeBox = False
@@ -143,8 +144,6 @@ Partial Class rLoginForm
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.Text = "Login"
-        Me.StatusStrip1.ResumeLayout(False)
-        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

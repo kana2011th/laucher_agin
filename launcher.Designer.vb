@@ -22,7 +22,6 @@ Partial Class Form3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
@@ -126,15 +125,13 @@ Partial Class Form3
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(284, 261)
         Me.Controls.Add(Me.SplitContainer1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.ImeMode = System.Windows.Forms.ImeMode.[On]
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(300, 300)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(300, 300)
         Me.Name = "Form3"
-        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MC ROCKERGER | Login"
         Me.SplitContainer1.Panel2.ResumeLayout(False)

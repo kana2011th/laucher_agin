@@ -4,14 +4,29 @@ Imports System.Net
 Imports System.Web
 Imports System.IO
 Public Class rLoginForm
+
     Private Sub btnexit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnexit.Click
         MyBase.Hide()
-        portal.Show()
     End Sub
 
     Private Sub btnlogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnlogin.Click
-
-        Minecraft.rLogin(Me.username.Text, Me.password.Text)
+        Dim webClient As New System.Net.WebClient
+        Dim sessUrl As String = "https://login.minecraft.net/?user=" + Me.username.Text + "&password=" + Me.password.Text + "&version=13"
+        Dim result As String = webClient.DownloadString(sessUrl)
+        Dim resu As String = result
+        Dim res = result.Split(":")
+        If result.ToString = "Bad login" Then
+            Me.isstatus.Text = "กรุณาตรวจสอบชื่อด้วยครับ"
+            'Dim Minecraft As Minecraft = New Minecraft
+            'Minecraft.rLogin(Me.username.Text, Me.password.Text)
+        ElseIf result.ToString = "Bad request" Then
+            Me.isstatus.Text = "กรุณาเรียกทีมงานเพื่อแก้ไขครับ"
+        Else
+            Me.isstatus.Text = "ยินดีต้อรับครับ " + res(2)
+            System.Threading.Thread.Sleep(2000)
+            Me.isstatus.Text = "กำลังตรวจสอบเวอรชั่น"
+            Me.mclaunch()
+        End If
     End Sub
     Private Sub mclaunch()
         Try
@@ -30,16 +45,5 @@ Public Class rLoginForm
         Catch
 
         End Try
-    End Sub
-    Public Sub Wait(ByVal seconds As Single)
-        Dim newDate As Date
-        newDate = Now.AddSeconds(seconds)
-
-        While Now.Ticks <= New Date().Ticks
-
-            Application.DoEvents()
-
-        End While
-
     End Sub
 End Class
